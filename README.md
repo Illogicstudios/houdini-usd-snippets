@@ -3,5 +3,5 @@ A collections of scripts and recipes for Houdini
 
 # Features
  - Auto Crop NDC
- - Compressor DWAB EXR
+ - Compression DWAB EXR
  - Zebra Checker
