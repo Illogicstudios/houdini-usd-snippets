@@ -1,5 +1,5 @@
 # UV Projection Camera-Based
-A tool to allow UV projection from camera.
+A tool that can be used to add camera-based UV to selected primitives projected in LOP.
 
 # Overview
 https://github.com/user-attachments/assets/e3a7a5be-00af-4474-9f0f-803551b6eee6
