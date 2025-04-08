@@ -1,0 +1,33 @@
+int iter = chi('iterations');
+float range = chf('range');
+float ior_medium = chf('IOR_medium');
+
+int trans = i@trans;
+vector pos = v@P;
+vector nml = v@N;
+vector dir = v@dir;
+float dist = 0.0;
+int count = 0;
+
+while(trans == 1 && iter > 0){
+    iter--;
+    count++;
+    @count = count;
+    int side = count % 2 == 1 ? -1 : 1;
+    float ior = side == 1 ? 1.0 / ior_medium : ior_medium;
+    dir = refract(normalize(dir), nml, ior) * side * range;
+    vector pos_hit;
+    vector uvw_hit;
+    int prim_hit = intersect(1, pos + nml * 1e-3 * side, dir, pos_hit, uvw_hit);
+    if(prim_hit < 0){
+        break;
+    }
+    dist += distance(pos, pos_hit);
+    pos = pos_hit;
+    nml = primuv(1, 'N', prim_hit, uvw_hit);
+    trans = primuv(1, 'trans', prim_hit, uvw_hit);
+}
+
+v@P = pos;
+f@trans = trans;
+f@dist = dist;
