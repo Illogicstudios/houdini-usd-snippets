@@ -1,5 +1,5 @@
 # UV Projection Camera-Based
-A tool that can be used to add camera-based UV to selected primitives projected in LOP.
+A tool that can be used to add camera-based UV to selected primitives projected in LOP.<br>
 Useful for camera mapping on deformed primitives.
 
 # Overview
