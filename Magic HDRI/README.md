@@ -13,5 +13,7 @@ Compositing control is limited, as only one AOV is available for the entire HDRI
 
 # Overview
 
+https://github.com/user-attachments/assets/f552bc7a-400c-4cf1-b1f7-c46de3d53194
+
 # How to use it
 An example scene can be found in `template/magicHdri.hip`.
