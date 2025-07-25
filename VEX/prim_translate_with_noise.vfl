@@ -1,0 +1,26 @@
+// Primitive Translation with Independent Axis Noise
+// Applies animated noise to a base translation vector per primitive.
+
+// Base translation vector
+vector base_pos = set(1.0, 0.0, -2.5);
+
+// Animation time factor
+float speed = ch("speed");
+float t = @Frame * speed;
+
+// Noise amplitude per axis
+float amp_x = ch("noiseX");
+float amp_y = ch("noiseY");
+float amp_z = ch("noiseZ");
+float noise_scale = ch("noiseScale");
+
+// Generate unique noise per axis using time and element number offsets
+float nx = noise(set(t, @elemnum, 0.0)) * amp_x * noise_scale;
+float ny = noise(set(t + 43.21, @elemnum, 1.0)) * amp_y * noise_scale;
+float nz = noise(set(t + 87.65, @elemnum, 2.0)) * amp_z * noise_scale;
+
+vector noise_vec = set(nx, ny, nz);
+vector final_pos = base_pos + noise_vec;
+
+// Apply the final transformation to the USD primitive
+usd_addtranslate(0, @primpath, "noisy_pos", final_pos);
